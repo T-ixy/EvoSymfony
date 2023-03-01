@@ -21,8 +21,8 @@ class Categories
     #[ORM\Column(length: 255)]
     private ?string $icone_url = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $color = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $color = null;
 
     #[ORM\ManyToMany(targetEntity: Formations::class, mappedBy: 'categories')]
     private Collection $formations;
@@ -61,12 +61,12 @@ class Categories
         return $this;
     }
 
-    public function getColor(): ?int
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    public function setColor(?int $color): self
+    public function setColor(?string $color): self
     {
         $this->color = $color;
 
