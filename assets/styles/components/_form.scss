@@ -1,0 +1,39 @@
+@use '../libs/variables';
+
+.form{
+    display: flex;
+    height: 40px;
+
+    input{
+        border-radius: .6rem 0 0 .6rem;
+        box-shadow: none;
+        border: none;
+        width: clamp(210px, 30vw, 470px);
+        height: auto;
+        padding: 0 0 0 1rem;
+        
+        &::placeholder{
+            font-size: .8rem;
+            letter-spacing: 1px;
+            font-style: italic;
+            
+        }
+
+        &:focus{
+            box-shadow: -2px 3px 43px 0px rgb(249,144,68);
+            border: none;
+        }
+    }
+
+    button{
+        box-shadow: none;
+        border:none;
+        border-left: 1.5px solid variables.$gray-dark;
+        border-radius: 0 .6rem .6rem 0;
+        width: 3rem;
+
+        &:hover{
+            background-color: variables.$gray-dark;
+        }
+    }
+}

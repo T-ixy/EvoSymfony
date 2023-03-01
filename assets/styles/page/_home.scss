@@ -1,0 +1,96 @@
+@use '../libs/variables';
+
+.main{
+    &__title{
+        background: variables.$primary;
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+
+.formation{
+    background: variables.$gray-light;
+    padding: 1.5rem 0;
+
+    &__contents{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+}
+
+.raison{
+    &__intro{
+        font-size: .9rem;
+        font-weight: variables.$fw-bold;
+        text-align: center;
+    }
+
+    &__contents{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__elements{
+        h3{
+            text-transform: capitalize;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        p{
+            margin: .5rem 0 0 0 ;
+            font-size: .8rem;
+            color: variables.$gray;
+        }
+
+        li{
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+
+            img{
+                width: 3rem;
+                padding: .5rem;
+                margin: 0 1rem 0 0 ;
+            }
+        }
+    }
+}
+
+.partenaire{
+    background: white;
+    padding: 2rem 0;
+    &__content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        img{
+            width: auto;
+            height: 5rem;
+            margin: 0 1rem;
+        }
+    }
+}
+
+.pagination{
+    position: absolute;
+    bottom: -1rem;
+
+    button{
+        font-size: 1.5rem;
+        background: variables.$gray-dark;
+        border-radius: .2rem;
+        cursor: pointer;
+        margin: 0 .5rem;
+    }
+}

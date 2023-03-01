@@ -1,0 +1,57 @@
+.mainConteneur{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-row-gap: 2em;
+	grid-column-gap: 4em;
+	padding: 5%;
+	font-family: sans-serif;
+}
+
+.mainConteneur > div{
+	padding: 3%;
+	text-align: center;
+	background:linear-gradient(white, white) padding-box,
+    linear-gradient(114deg, rgba(249,144,68,1) 0%, rgba(249,144,68,1) 30%, rgba(143,8,85,1) 77%) border-box;
+    border : 3px solid transparent;
+    border-radius: 5%;
+    box-shadow: 2px 5px 0px 0px rgba(0,0,0,0.17);
+    line-height: 1.5em;
+}
+
+.mainConteneur > div > details >summary{
+	color: white;
+	background: linear-gradient(114deg, rgb(249, 144, 68) 0%, rgb(220, 30, 73) 15%, rgb(143, 8, 85) 77%); 
+	width: 6em;
+	border-radius: 5em;
+	margin: 0 auto;
+}
+
+.mainConteneur > div > h4{
+	color: #2b292a;
+}
+
+.mainConteneur .fa-solid{
+	color: #d61c4a;
+}
+
+
+#condTitle{
+	text-align: center;
+	background: linear-gradient(114deg, rgba(249,144,68,1) 0%, rgba(220,30,73,1) 15%, rgba(143,8,85,1) 77%);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent;
+	font-family: sans-serif;
+	margin-top: 5em;
+}
+
+@media screen and (max-width: 930px){
+    .mainConteneur{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-row-gap: 2em;
+	grid-column-gap: 4em;
+	padding: 5%;
+	font-family: sans-serif;
+	}
+}

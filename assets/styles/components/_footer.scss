@@ -1,0 +1,42 @@
+@use "../libs/variables";
+
+.footer{
+    background: variables.$dark;
+    color: variables.$gray-light;
+
+    &__content{
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 1rem 5vw;
+    }
+
+    &__title{
+        color: variables.$secondary;
+    }
+
+    &__soc{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        li{
+            margin: 0 1rem;
+        }
+    }
+
+    &__img{
+        width: 15rem;
+    }
+
+    &__copyright{
+        background: black;
+        padding: .5rem 0;
+        text-align: center;
+        
+        p{
+            margin: 0;
+        }
+    }
+}

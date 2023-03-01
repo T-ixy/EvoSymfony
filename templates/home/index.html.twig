@@ -1,0 +1,38 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block headContent %}
+	<div class="header__content">
+		<img src="/images/afrique.png" alt="l'Afrique 100% en ligne">
+		<h1>
+			<b>Décrochez</b>
+			vos
+			<b>diplômes</b>,
+			<b>certificats</b>,
+			<b>attestations</b>
+			depuis chez vous à des
+			<b>prix préférentiels</b>
+		</h1>
+		<div class="header__center">
+			<div class="header__center__form">
+				<form action="/" method="post">
+					<div class="form">
+						<input type="text" name="search" id="search" placeholder="Trouver une formation">
+						<button type="submit" class="form__button">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</div>
+				</form>
+
+				<button class="button button--yellow" id="filter">Catégories</button>
+				<div class="burger">
+					<div class="burger__bar"></div>
+				</div>
+			</div>
+		</div>
+		<img src="./images/header-right.png" alt="l'Afrique 100% en ligne" style="width: 18rem;">
+	</div>
+{% endblock %}

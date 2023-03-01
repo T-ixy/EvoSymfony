@@ -1,0 +1,48 @@
+@use "../libs/variables";
+
+.burger{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &__bar{
+        width: 25px;
+        height: 3px;
+        border-radius: 10rem;
+        background: variables.$gray-light;
+        transition: all .3s ease-in-out;
+
+        &::before, 
+        &::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            border-radius: 10rem;
+            background: variables.$gray-light;
+            transition: all .3s ease-in-out;
+        }
+
+        &::before {
+            transform: translateY(7px);
+        }
+
+        &::after {
+            transform: translateY(-7px);
+        }
+    }
+
+    &.open &__bar{
+        background: transparent;
+
+        &::before{
+            transform: rotate(45deg) ;
+        }
+
+        &::after{
+            transform: rotate(-45deg) ;
+        }
+    } 
+}

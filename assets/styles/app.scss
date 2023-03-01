@@ -1,3 +1,20 @@
-body {
-    background-color: lightseagreen;
-}
+@use './libs/default';
+@use './libs/querymedia';
+
+@use './components/header';
+@use './components/navigation';
+@use './components/burger';
+@use './components/form';
+@use './components/filter';
+@use './components/button';
+@use './components/card';
+@use './components/footer';
+
+@use './page/home';
+@use './page/formation';
+
+@use './other/contact.css';
+@use './other/mentionL.css';
+@use './other/condition.css';
+
+@import '~@fortawesome/fontawesome-free/css/all.min.css';

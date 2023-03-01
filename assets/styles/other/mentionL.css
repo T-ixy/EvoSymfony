@@ -1,0 +1,53 @@
+.contentBox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#mainContent{
+	font-family: sans-serif;
+	border: 1px solid white;
+	padding: 1%;
+	background:linear-gradient(white, white) padding-box,
+    linear-gradient(114deg, rgba(249,144,68,1) 0%, rgba(249,144,68,1) 30%, rgba(143,8,85,1) 77%) border-box;
+    border-bottom: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-radius: 5%;
+    box-shadow: 9px 7px 0px 0px rgba(0,0,0,0.17);
+    -webkit-box-shadow: 9px 7px 0px 0px rgba(0,0,0,0.17);
+    -moz-box-shadow: 9px 7px 0px 0px rgba(0,0,0,0.17);
+
+}
+
+#mainContent h2{
+	text-align: center;
+	background: linear-gradient(114deg, rgba(249,144,68,1) 0%, rgba(220,30,73,1) 15%, rgba(143,8,85,1) 77%);
+	background-clip: border-box;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 3px 2px 2px rgba(223,214,214,0.34);
+}
+
+#mainContent h3{
+	text-align: center;
+}
+
+.listMention{
+	list-style-type: circle;
+}
+
+.listMention li{
+	line-height: 2em;
+}
+
+.underlineTitle{
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.img_mention{
+	float: right;
+	width: 250px;
+	height: 150px;
+}
+

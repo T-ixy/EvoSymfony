@@ -1,0 +1,117 @@
+@media screen and (min-width:425px) {
+
+    .footer{
+
+        ul{
+            line-height: 25px !important;
+        }
+
+        &__content{
+            display: grid;
+            grid-template-columns: 1fr 1fr !important;
+        }
+
+        &__soc{
+            position: relative !important;
+            top: 25%;
+            transform: translateY(-25%);
+        }
+    }
+}
+
+@media screen and (min-width:1080px) {
+
+    .navigation{
+        &__links{
+            i{
+                display: none !important;
+            }
+
+            span{
+                display: unset !important;
+            }
+        }
+    }
+
+    .filter__main{
+        display: block !important;
+    }
+
+    .header{
+        position: unset !important;
+
+        &__content{
+            h1, img{
+                display: block !important;
+            }
+        }
+
+        &__center{
+            &__form{
+                top: 75%;
+                transform: translateY(-75%);
+                position: relative;
+            }
+        }
+    }
+
+    .filter__main{
+        height: 200% !important;
+        overflow: auto !important;
+        position: relative !important;
+    }
+
+    .filter--active{
+        position: relative !important;
+    }
+
+    .raison__contents{
+        display: flex;
+        flex-wrap: nowrap !important;
+    }
+
+    .burger{
+        display: none !important;
+    }
+
+    .filter--main{
+        position: relative !important;
+    }
+
+    .footer{
+        ul{
+            line-height: 30px !important;
+            
+        }
+
+        &__content{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr !important;
+        }
+    }
+
+    .main--formation{
+        display: flex;
+        justify-content: center !important;
+
+        &__left{
+            // margin: 0 5rem 0 0;
+            width: 30rem !important;
+            background-color: white !important;
+
+            .filter__dom li{
+                margin: 0 0 .5rem 0;
+            }
+        }
+    }
+
+    .aside__filter{
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .formations{
+        padding: 0!important;
+        width: 50rem;
+    }
+}

@@ -1,0 +1,75 @@
+@use "../libs/variables";
+
+.formations{
+    padding: 0 5vw;
+
+    h3{
+        text-transform: capitalize;
+    }
+
+    p{
+        font-size: .9REM;
+    }
+
+    &__title{
+        font-weight: variables.$fw-bold;
+    }
+
+    &__menu{
+        ul{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        li{
+            line-height: 1.5;
+            margin: 0 .5rem;
+        }
+
+        a{
+            font-weight: variables.$fw-bold;
+            display: inline-block;
+            position: relative;
+            padding: 0 0 .2rem 0;
+            font-size: 1.2rem;
+
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background: 
+                linear-gradient(white, white) padding-box,
+                linear-gradient(114deg, rgba(249,144,68,1) 0%, rgba(249,144,68,1) 30%, rgba(143,8,85,1) 77%) border-box;
+                
+                border-bottom: 3px solid transparent;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+
+            &:hover::after{
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+        }
+    }
+
+    &__list{
+        list-style-type: circle;
+        margin: 0 0 0 3rem;
+    }
+}
+
+.main--formation{
+    padding: 2rem 0;
+
+    &__right{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

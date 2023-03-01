@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+	<header class="header">
+
+		<nav class="navigation">
+			<a class="navigation__brand" href="/">
+				<img src="{{ asset('images/logo.png') }}" alt="Logo d'EvolutiV" class="navigation__img">
+			</a>
+
+
+			<div class="navigation__menus">
+				<ul class="navigation__elements">
+					<li class="navigation__element">
+						<a href="https://edu.e-saina.com/e-learning/" class="navigation__links" connexion>
+							<i class="fa-regular fa-circle-user"></i>
+							<span>Connexion</span>
+						</a>
+					</li>
+					<li
+						class="navigation__element">
+						<!-- <a href="#" class="navigation__links" inscription>
+						                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+						                            <span class="button">Inscription</span>
+						                        </a> -->
+
+						<details class="navigation__links">
+							<summary>
+								<i class="fa-solid fa-arrow-right-to-bracket"></i>
+								<span class="button">Inscription</span>
+							</summary>
+
+							<ul>
+								<li><a href="https://edu.e-saina.com/inscription-formation-evolutiv/" target="blank">Formation EvolutiV</a></li>
+								<li><a href="https://edu.e-saina.com/inscription-evolutiv-international/" target="blank">Online Formapro</a></li>
+								<li><a href="https://edu.e-saina.com/incription-evolutiv/" target="blank">ESOAD</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-airam-montessori/" target="blank">AIRAM MONTESSORI</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-alti-trading/" target="blank">ALTI-TRADING</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-formalis/" target="blank">FORMALIS</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-walter-learning/" target="blank">WALTER LEARNING</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-educatel/" target="blank">EDUCATEL</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-walter-sante/" target="blank">WALTER SANTE</a></li>
+								<li><a href="https://edu.e-saina.com/formulaire-dinscription-stardust-masterclass/" target="blank">STARDUST MASTERCLASS</a></li>
+							</ul>
+						</details>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		{% block headContent %}{% endblock %}
+
+		<aside class="filter">
+			<div>
+				<h2 class="filter__title">Niveaux</h2>
+				<ul
+					class="filter__elements">{# les sanction #}
+				</ul>
+			</div>
+
+			<div class="filter__dom">
+				<h2 class="filter__title">Domaines</h2>
+
+				<ul
+					class="filter__elements filter__elements--dom">{# les categories #}
+				</ul>
+			</div>
+		</aside>
+
+	</header>
+
+	<main class="main">
+
+		{% block main %}{% endblock %}
+
+	</main>
+
+	<footer class="footer">
+		<div class="footer__content">
+			<div>
+				<h2 class="footer__title">A PROPOS DE NOUS</h2>
+				<ul>
+					<li><a href="./contact.php">Contactez-nous</a></li>
+					<li><a href="./mentionLegales.php">Mentions Légales</a></li>
+					<li><a href="./ConditionUtilisation.php">Conditions d'utilisation</a></li>
+				</ul>
+			</div>
+			<div>
+				<h2 class="footer__title">NOS CONTACTS</h2>
+				<ul>
+					<li>
+						<i class="fa-solid fa-phone"></i>
+						<a href="tel:261345320222">
+							+261 34 53 202 22</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-phone"></i>
+						<a href="tel:261385320222">
+							+261 38 53 202 22</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-envelope"></i>
+						<a href="mailto:service@evolutiv-online.com">service@evolutiv-online.com</a>
+					</li>
+					<li>
+						<i class="fa-solid fa-location-dot"></i>
+						Lot VG 26 Ter Antsahabe - Antananarivo 101
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h2 class="footer__title">SUIVEZ - NOUS SUR
+				</h2>
+				<ul class="footer__soc">
+					<li>
+						<a href="https://www.facebook.com/profile.php?id=100075925192914">
+							<i class="fa-2x fa-brands fa-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/company/evolutiv-online/">
+							<i class="fa-2x fa-brands fa-linkedin"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://instagram.com/evolutiv.formation?igshid=YmMyMTA2M2Y=">
+							<i class="fa-2x fa-brands fa-instagram"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h2 class="footer__title">AUTRE PLATEFORME</h2>
+				<a href="https://cav.mg/">
+					<img src="./images/logo-cav.png" alt="Plateforme Cav Madagascar" class="footer__img">
+				</a>
+			</div>
+		</div>
+		<div class="footer__copyright">
+			<p>Copyright
+				<i class="fa-regular fa-copyright"></i>
+				EvolutiV
+			</p>
+		</div>
+	</footer>
+
+{% endblock %}
