@@ -57,7 +57,12 @@
 			<div>
 				<h2 class="filter__title">Niveaux</h2>
 				<ul
-					class="filter__elements">{# les sanction #}
+					class="filter__elements">
+					{% for sanction in sanctions %}
+						<li>
+							<a href="#" class="button">{{ sanction.sanction }}</a>
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 
@@ -65,7 +70,15 @@
 				<h2 class="filter__title">Domaines</h2>
 
 				<ul
-					class="filter__elements filter__elements--dom">{# les categories #}
+					class="filter__elements filter__elements--dom">
+					{% for category in categories %}
+						<li>
+							<a href="#" class="button button--filter">
+								<img src="{{ category.iconeUrl }}" style="width:1.5rem;height:auto">
+								{{ category.category }}
+							</a>
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</aside>
