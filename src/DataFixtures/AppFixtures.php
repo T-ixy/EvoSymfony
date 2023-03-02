@@ -16,8 +16,8 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-        $faker = \Faker\Factory::create();
-
+        $faker = \Faker\Factory::create('fr_FR');
+        $cats = [];
         for ($i = 0; $i < 15; $i++) {
             $cat = new Categories();
 
@@ -26,16 +26,20 @@ class AppFixtures extends Fixture
                 ->setColor($faker->hexColor());
 
             $manager->persist($cat);
+            $cats[] = $cat;
         }
 
+        $sancs = [];
         for ($i=0; $i < 5; $i++) { 
             $sanc = new Sanctions();
 
             $sanc->setSanction($faker->word());
 
             $manager->persist($sanc);
+            $sancs[] = $sanc;
         }
 
+        $unis = [];
         for ($i=0; $i < 10; $i++) { 
             $uni = new Universities();
 
@@ -43,13 +47,14 @@ class AppFixtures extends Fixture
                 ->setLogoUrl($faker->imageUrl(640, 480, 'university', true));
 
             $manager->persist($uni);
+            $unis[] = $uni;
         }
 
         for ($i=0; $i < 20; $i++) { 
             $for = new Formations();
 
-            $for->setSanction($sanc)
-                ->setUniversity($uni)
+            $for->setSanction($sancs[rand(0,4)])
+                ->setUniversity($unis[rand(0,9)])
                 ->setTitle($faker->words(5, true))
                 ->setGenerality($faker->paragraphs(6, true))
                 ->setPrerequisite($faker->words(3, true))
@@ -60,6 +65,12 @@ class AppFixtures extends Fixture
                 ->setDuration($faker->word())
                 ->setPriority($faker->boolean())
                 ->setVignetteUrl($faker->imageUrl(640, 480, 'formation', true));
+
+            $randomCategories = array_rand($cats, rand(2, 3));
+            foreach ($randomCategories as $index) {
+                $category = $cats[$index];
+                $for->addCategory($category);
+            }
 
                 $manager->persist($for);
         }
