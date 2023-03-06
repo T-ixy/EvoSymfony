@@ -3,9 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Formations;
+use App\Model\SearchData;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @extends ServiceEntityRepository<Formations>
@@ -17,9 +20,17 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FormationsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+
+    /**
+     * @var PaginatorInterface
+     */
+    private PaginatorInterface $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Formations::class);
+
+        $this->paginator = $paginator;
     }
 
     public function save(Formations $entity, bool $flush = false): void
@@ -40,34 +51,66 @@ class FormationsRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Formations[] Returns an array of Formations objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Formations[] Returns an array of Formations objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('f')
+    //            ->andWhere('f.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('f.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Formations
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Formations
+    //    {
+    //        return $this->createQueryBuilder('f')
+    //            ->andWhere('f.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 
-    public function findAllQuery(): Query 
+    public function findAllPaginate(Request $request): PaginationInterface
     {
-        return $this->createQueryBuilder('*')
-            ->getQuery();
+        $formations = $this->findAll();
+
+        $pagination = $this->paginator->paginate(
+            $formations,
+            $request->query->getInt('page', 1),
+            8
+        );
+
+        return $pagination;
     }
+
+    public function findFormationsBySearch(SearchData $search, Request $request)
+{
+    $entityManager = $this->getEntityManager();
+
+    $query = $entityManager->createQuery(
+        'SELECT f, d, u
+        FROM App\Entity\Formations f
+        JOIN f.categories d
+        JOIN f.university u
+        WHERE f.title LIKE :search
+        OR f.generality LIKE :search
+        ORDER BY f.id'
+    )->setParameter('search', '%'.$search->search.'%');
+
+    $pagination = $this->paginator->paginate(
+        $query,
+        $request->query->getInt('page', 1),
+        8
+    );
+
+    return $pagination;
+
+}
+
 }

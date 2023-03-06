@@ -18,14 +18,8 @@
 		</h1>
 		<div class="header__center">
 			<div class="header__center__form">
-				<form action="/" method="post">
-					<div class="form">
-						<input type="text" name="search" id="search" placeholder="Trouver une formation">
-						<button type="submit" class="form__button">
-							<i class="fa-solid fa-magnifying-glass"></i>
-						</button>
-					</div>
-				</form>
+
+				{% include "./components/searchForm.html.twig" with {form:form} %}
 
 				<button class="button button--yellow" id="filter">Catégories</button>
 				<div class="burger">
@@ -132,7 +126,7 @@
 		<h2 class="main__title">Pourquoi evolutiv ?</h2>
 		<p class="raison__intro">
 			EvolutiV est une plateforme 100% en ligne répertoriant et propageant des offres de formation sur les
-			                continents Africain et dans l'Océan Indien.
+															                continents Africain et dans l'Océan Indien.
 		</p>
 		<div class="raison__contents">
 			<img src="./images/cert.png" alt="Les certificats venant de vos">
@@ -144,7 +138,7 @@
 						<h3>Une large gamme de formation à votre disposition</h3>
 						<p>
 							Envie de monter en Compétences ou d'explorer un autre domaine ? Nous répondons à vos
-							                                besoins à travers nos offres de formation par secteurs, par sanction et par cout.
+																																			                                besoins à travers nos offres de formation par secteurs, par sanction et par cout.
 						</p>
 					</div>
 				</li>
@@ -154,8 +148,8 @@
 						<h3>Un accompagnement personnalisé</h3>
 						<p>
 							En plus des suivis et accompagnements venant de nos partenaires, notre équipe
-							                                pédagogique sera mise à votre disposition et à votre écoute tout le long de la
-							                                formation.
+																																			                                pédagogique sera mise à votre disposition et à votre écoute tout le long de la
+																																			                                formation.
 						</p>
 					</div>
 				</li>
@@ -165,7 +159,7 @@
 						<h3>Une inscription à portée de main</h3>
 						<p>
 							Votre choix est fait, inscrivez-vous directement et facilement sur le site sans vous
-							                                déplacer.
+																																			                                déplacer.
 						</p>
 					</div>
 				</li>
@@ -175,7 +169,7 @@
 						<h3>Un Tarif préférentiel pour vous</h3>
 						<p>
 							EvolutiV négocie des tarifs remisés auprès des partenaires correspondant à votre budget
-							                                !
+																																			                                !
 						</p>
 					</div>
 				</li>
@@ -185,7 +179,7 @@
 						<h3>Une formation/étude digitalisée</h3>
 						<p>
 							Disposez sur tous vos appareils connectés, un accés sur vos cours et notre bibliothèque
-							                                numérique.
+																																			                                numérique.
 						</p>
 					</div>
 				</li>
@@ -195,7 +189,7 @@
 						<h3>Une liberté sur votre temps</h3>
 						<p>
 							Avec EvolutiV, vous vous formez en fonction de votre enploi du temps et sans contrainte
-							                                sur votre disponibilité.
+																																			                                sur votre disponibilité.
 						</p>
 					</div>
 				</li>
@@ -205,7 +199,7 @@
 						<h3>Un plus votre CV</h3>
 						<p>
 							Grace à nous, vous pouvez bébéficier d'un diplôme / certificat / attestation
-							                                internationaux à la fin de votre formation.
+																																			                                internationaux à la fin de votre formation.
 						</p>
 					</div>
 				</li>
@@ -215,7 +209,7 @@
 						<h3>Un parcours académique efficace et performant</h3>
 						<p>
 							A votre rythme et à tout moment, vous pouvez bénéficier de meilleures formations
-							                                complètes et certifiantes sur notre plateforme.
+																																			                                complètes et certifiantes sur notre plateforme.
 						</p>
 					</div>
 				</li>
@@ -224,19 +218,19 @@
 	</section>
 
 	<section class="partenaire">
-            <h2 class="main__title">Découvrez nos partenaires</h2>
-            <div class="partenaire__content">
-                <img src="./images/partner/airam.png" alt="">
-                <img src="./images/partner/alti-trading.png" alt="">
-                <img src="./images/partner/educatel.png" alt="">
-                <img src="./images/partner/esoad.png" alt="">
-                <img src="./images/partner/formalis.png" alt="">
-                <img src="./images/partner/lafontaine.png" alt="">
-                <img src="./images/partner/Online.png" alt="">
-                <img src="./images/partner/walter-learning.png" alt="">
-                <img src="./images/partner/walter-sante.png" alt="">
-                <img src="./images/partner/stardust masterclass.png" alt="" style="width: 8rem; height:auto">
-            </div>
-        </section>
+		<h2 class="main__title">Découvrez nos partenaires</h2>
+		<div class="partenaire__content">
+			<img src="./images/partner/airam.png" alt="">
+			<img src="./images/partner/alti-trading.png" alt="">
+			<img src="./images/partner/educatel.png" alt="">
+			<img src="./images/partner/esoad.png" alt="">
+			<img src="./images/partner/formalis.png" alt="">
+			<img src="./images/partner/lafontaine.png" alt="">
+			<img src="./images/partner/Online.png" alt="">
+			<img src="./images/partner/walter-learning.png" alt="">
+			<img src="./images/partner/walter-sante.png" alt="">
+			<img src="./images/partner/stardust masterclass.png" alt="" style="width: 8rem; height:auto">
+		</div>
+	</section>
 
 {% endblock %}

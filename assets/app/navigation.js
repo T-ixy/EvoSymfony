@@ -1,11 +1,13 @@
 const nav = document.querySelector('.navigation');
 const content = `<div class="header__center__form navigation__form">
-<form action="/" method="post">
-    <div class="form">
-        <input type="text" name="search" id="search" placeholder="Trouver une formation">
-        <button type="submit" class="form__button"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
-</form>
+<form name="search" method="get">
+				<div class="form">
+					<input type="search" id="search_search" name="search[search]" required="required" Placeholder="Trouver une formation" />
+					<button type="submit" class="form__button">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
+				</div>
+				</form>
 <a class="button button--yellow filter__nav" href="#filter-target" id="filter">Catégories</a>
 
 </div>`;
