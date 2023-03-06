@@ -45,4 +45,37 @@ class HomeController extends AbstractController
         ]);
 
     }
+
+    #[Route('/{filter}', name: 'app_home_filter')]
+    public function filter(
+        SanctionsRepository $sanctionRepo,
+        CategoriesRepository $categoryRepo,
+        FormationsRepository $formationRepo,
+        Request $request,
+        ?string $filter
+    ): Response {
+
+        $sanctions = $sanctionRepo->findAll();
+        $categories = $categoryRepo->findAll();
+        
+
+        $searchData = new SearchData();
+        $form = $this->createForm(SearchType::class, $searchData);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formations = $formationRepo->findFormationsBySearch($searchData, $request);
+        } else {
+            $formations = $formationRepo->findFiltered($filter, $request);
+        }
+
+        return $this->render('home/index.html.twig', [
+            'Page_title' => 'Accueil',
+            'sanctions'  => $sanctions,
+            'categories' => $categories,
+            'formations' => $formations,
+            'form'       => $form->createView()
+        ]);
+
+    }
 }

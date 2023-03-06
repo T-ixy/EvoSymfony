@@ -90,27 +90,46 @@ class FormationsRepository extends ServiceEntityRepository
     }
 
     public function findFormationsBySearch(SearchData $search, Request $request)
-{
-    $entityManager = $this->getEntityManager();
+    {
+        $entityManager = $this->getEntityManager();
 
-    $query = $entityManager->createQuery(
-        'SELECT f, d, u
+        $query = $entityManager->createQuery(
+            'SELECT f, d, u
         FROM App\Entity\Formations f
         JOIN f.categories d
         JOIN f.university u
         WHERE f.title LIKE :search
         OR f.generality LIKE :search
         ORDER BY f.id'
-    )->setParameter('search', '%'.$search->search.'%');
+        )->setParameter('search', '%' . $search->search . '%');
 
-    $pagination = $this->paginator->paginate(
-        $query,
-        $request->query->getInt('page', 1),
-        8
-    );
+        $pagination = $this->paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            8
+        );
 
-    return $pagination;
+        return $pagination;
+    }
 
-}
+    public function findFiltered(string $filter, Request $request)
+    {
+        $entityManager = $this->getEntityManager();
 
+        $query = $entityManager->createQuery(
+            'SELECT f 
+            FROM App\Entity\Formations f
+            LEFT JOIN f.categories c 
+            LEFT JOIN f.sanction s 
+            WHERE c.Category = :condition OR s.Sanction = :condition'
+        )->setParameter('condition', $filter);
+
+        $pagination = $this->paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            8
+        );
+
+        return $pagination;
+    }
 }
