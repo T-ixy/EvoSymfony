@@ -20,12 +20,7 @@
 							<span>Connexion</span>
 						</a>
 					</li>
-					<li
-						class="navigation__element">
-						<!-- <a href="#" class="navigation__links" inscription>
-						                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-						                            <span class="button">Inscription</span>
-						                        </a> -->
+					<li class="navigation__element">
 
 						<details class="navigation__links">
 							<summary>
@@ -34,16 +29,11 @@
 							</summary>
 
 							<ul>
-								<li><a href="https://edu.e-saina.com/inscription-formation-evolutiv/" target="blank">Formation EvolutiV</a></li>
-								<li><a href="https://edu.e-saina.com/inscription-evolutiv-international/" target="blank">Online Formapro</a></li>
-								<li><a href="https://edu.e-saina.com/incription-evolutiv/" target="blank">ESOAD</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-airam-montessori/" target="blank">AIRAM MONTESSORI</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-alti-trading/" target="blank">ALTI-TRADING</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-formalis/" target="blank">FORMALIS</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-walter-learning/" target="blank">WALTER LEARNING</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-educatel/" target="blank">EDUCATEL</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-walter-sante/" target="blank">WALTER SANTE</a></li>
-								<li><a href="https://edu.e-saina.com/formulaire-dinscription-stardust-masterclass/" target="blank">STARDUST MASTERCLASS</a></li>
+								{% for university in universities %}
+									<li>
+										<a href="{{ university.loginUrl }}" target="blank">{{ university.university }}</a>
+									</li>
+								{% endfor %}
 							</ul>
 						</details>
 					</li>
@@ -56,8 +46,7 @@
 		<aside class="filter">
 			<div>
 				<h2 class="filter__title">Niveaux</h2>
-				<ul
-					class="filter__elements">
+				<ul class="filter__elements">
 					{% for sanction in sanctions %}
 						<li>
 							<a href="#" class="button">{{ sanction.sanction }}</a>
@@ -69,11 +58,10 @@
 			<div class="filter__dom">
 				<h2 class="filter__title">Domaines</h2>
 
-				<ul
-					class="filter__elements filter__elements--dom">
+				<ul class="filter__elements filter__elements--dom">
 					{% for category in categories %}
 						<li>
-							<a href="#" class="button button--filter" >
+							<a href="#" class="button button--filter">
 								<img src="{{ category.iconeUrl }}" class="filter__img">
 								{{ category.category }}
 							</a>
@@ -148,7 +136,7 @@
 			<div>
 				<h2 class="footer__title">AUTRE PLATEFORME</h2>
 				<a href="https://cav.mg/">
-					<img src="./images/logo-cav.png" alt="Plateforme Cav Madagascar" class="footer__img">
+					<img src="{{ asset('images/logo-cav.png') }}" alt="Plateforme Cav Madagascar" class="footer__img">
 				</a>
 			</div>
 		</div>

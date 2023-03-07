@@ -7,6 +7,7 @@ use App\Model\SearchData;
 use App\Repository\CategoriesRepository;
 use App\Repository\FormationsRepository;
 use App\Repository\SanctionsRepository;
+use App\Repository\UniversitiesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,11 +20,13 @@ class HomeController extends AbstractController
         SanctionsRepository $sanctionRepo,
         CategoriesRepository $categoryRepo,
         FormationsRepository $formationRepo,
+        UniversitiesRepository $universityRepo,
         Request $request
     ): Response {
 
         $sanctions = $sanctionRepo->findAll();
         $categories = $categoryRepo->findAll();
+        $universities = $universityRepo->findAll();
         
 
         $searchData = new SearchData();
@@ -37,11 +40,12 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/index.html.twig', [
-            'Page_title' => 'Accueil',
-            'sanctions'  => $sanctions,
-            'categories' => $categories,
-            'formations' => $formations,
-            'form'       => $form->createView()
+            'Page_title'   => 'Accueil',
+            'sanctions'    => $sanctions,
+            'categories'   => $categories,
+            'universities' => $universities,
+            'formations'   => $formations,
+            'form'          => $form->createView()
         ]);
 
     }
@@ -50,6 +54,7 @@ class HomeController extends AbstractController
     public function filter(
         SanctionsRepository $sanctionRepo,
         CategoriesRepository $categoryRepo,
+        UniversitiesRepository $universityRepo,
         FormationsRepository $formationRepo,
         Request $request,
         ?string $filter
@@ -57,6 +62,7 @@ class HomeController extends AbstractController
 
         $sanctions = $sanctionRepo->findAll();
         $categories = $categoryRepo->findAll();
+        $universities = $universityRepo->findAll();
         
 
         $searchData = new SearchData();
@@ -73,6 +79,7 @@ class HomeController extends AbstractController
             'Page_title' => 'Accueil',
             'sanctions'  => $sanctions,
             'categories' => $categories,
+            'universities' => $universities,
             'formations' => $formations,
             'form'       => $form->createView()
         ]);

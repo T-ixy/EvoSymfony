@@ -44,7 +44,9 @@ class AppFixtures extends Fixture
             $uni = new Universities();
 
             $uni->setUniversity($faker->words(3, true))
-                ->setLogoUrl($faker->imageUrl(640, 480, 'university', true));
+                ->setLogoUrl($faker->imageUrl(640, 480, 'university', true))
+                ->setLoginUrl($faker->url())
+                ->setSiteUrl($faker->url());
 
             $manager->persist($uni);
             $unis[] = $uni;
