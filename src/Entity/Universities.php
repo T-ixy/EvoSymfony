@@ -24,6 +24,12 @@ class Universities
     #[ORM\OneToMany(mappedBy: 'university', targetEntity: Formations::class, orphanRemoval: true)]
     private Collection $formations;
 
+    #[ORM\Column(length: 255)]
+    private ?string $login_url = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $site_url = null;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
@@ -84,6 +90,30 @@ class Universities
                 $formation->setUniversity(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLoginUrl(): ?string
+    {
+        return $this->login_url;
+    }
+
+    public function setLoginUrl(string $login_url): self
+    {
+        $this->login_url = $login_url;
+
+        return $this;
+    }
+
+    public function getSiteUrl(): ?string
+    {
+        return $this->site_url;
+    }
+
+    public function setSiteUrl(?string $site_url): self
+    {
+        $this->site_url = $site_url;
 
         return $this;
     }

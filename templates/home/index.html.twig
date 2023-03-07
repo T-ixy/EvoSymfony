@@ -6,7 +6,7 @@
 
 {% block headContent %}
 	<div class="header__content">
-		<img src="/images/afrique.png" alt="l'Afrique 100% en ligne">
+		<img src="{{ asset('images/afrique.png') }}" alt="l'Afrique 100% en ligne">
 		<h1>
 			<b>Décrochez</b>
 			vos
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 		</div>
-		<img src="./images/header-right.png" alt="l'Afrique 100% en ligne" style="width: 18rem;">
+		<img src="{{ asset('images/header-right.png') }}" alt="l'Afrique 100% en ligne" style="width: 18rem;">
 	</div>
 {% endblock %}
 
@@ -35,26 +35,26 @@
 
 	<aside class="filter  filter__main" id="filter-target">
 		<div>
-			<h2 class="filter__title">
+			<h2 class="filter__title" id="niveau">
 				Niveaux
 				<small>
-					<a href="/">Tous les niveaux</a>
+					<a href="/#formation">Tous les niveaux</a>
 				</small>
 			</h2>
 			<ul class="filter__elements">
 				{% for sanction in sanctions %}
 					<li>
-						<a href="#" class="button">{{ sanction.sanction }}</a>
+						<a href="{{ path('app_home_filter', {filter:sanction.sanction}) }}" class="button">{{ sanction.sanction }}</a>
 					</li>
 				{% endfor %}
 			</ul>
 		</div>
 
 		<div class="filter__dom">
-			<h2 class="filter__title">
+			<h2 class="filter__title" id>
 				Domaines
 				<small>
-					<a href="/">Tous les domaines</a>
+					<a href="/#formation">Tous les domaines</a>
 				</small>
 			</h2>
 
@@ -62,7 +62,7 @@
 
 				{% for category in categories %}
 					<li>
-						<a href="#" class="button button--filter">
+						<a href="{{ path('app_home_filter', {filter:category.category}) }}" class="button button--filter">
 							<img src="{{ category.iconeUrl }}" class="filter__img">
 							{{ category.category }}
 						</a>
@@ -87,7 +87,7 @@
 						<img class="card__img" src="{{ formation.vignetteUrl }}" alt="titre de la formation">
 					</div>
 					<div class="card__body">
-						<a href="#">
+						<a href="{{ path('app_formations', {id:formation.id}) }}">
 							<h3>{{ formation.title }}</h3>
 							<span class="invisible" style="position: absolute; inset: 0;"></span>
 						</a>
@@ -129,11 +129,11 @@
 															                continents Africain et dans l'Océan Indien.
 		</p>
 		<div class="raison__contents">
-			<img src="./images/cert.png" alt="Les certificats venant de vos">
+			<img src="{{ asset('images/cert.png') }}" alt="Les certificats venant de vos">
 
 			<ul class="raison__elements">
 				<li>
-					<img src="./images/icon/circle-01.png" alt="online library">
+					<img src="{{ asset('images/icon/circle-01.png') }}" alt="online library">
 					<div>
 						<h3>Une large gamme de formation à votre disposition</h3>
 						<p>
@@ -143,7 +143,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-02.png" alt="hight five">
+					<img src="{{ asset('images/icon/circle-02.png') }}" alt="hight five">
 					<div>
 						<h3>Un accompagnement personnalisé</h3>
 						<p>
@@ -154,7 +154,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-03.png" alt="all online">
+					<img src="{{ asset('images/icon/circle-03.png') }}" alt="all online">
 					<div>
 						<h3>Une inscription à portée de main</h3>
 						<p>
@@ -164,7 +164,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-04.png" alt="100% en ligne">
+					<img src="{{ asset('images/icon/circle-04.png') }}" alt="100% en ligne">
 					<div>
 						<h3>Un Tarif préférentiel pour vous</h3>
 						<p>
@@ -174,7 +174,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-05.png" alt="e-learning">
+					<img src="{{ asset('images/icon/circle-05.png') }}" alt="e-learning">
 					<div>
 						<h3>Une formation/étude digitalisée</h3>
 						<p>
@@ -184,7 +184,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-06.png" alt="Calendrier">
+					<img src="{{ asset('images/icon/circle-06.png') }}" alt="Calendrier">
 					<div>
 						<h3>Une liberté sur votre temps</h3>
 						<p>
@@ -194,7 +194,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-03.png" alt="All online">
+					<img src="{{ asset('images/icon/circle-03.png') }}" alt="All online">
 					<div>
 						<h3>Un plus votre CV</h3>
 						<p>
@@ -204,7 +204,7 @@
 					</div>
 				</li>
 				<li>
-					<img src="./images/icon/circle-07.png" alt="graduation">
+					<img src="{{ asset('images/icon/circle-07.png') }}" alt="graduation">
 					<div>
 						<h3>Un parcours académique efficace et performant</h3>
 						<p>
@@ -220,17 +220,11 @@
 	<section class="partenaire">
 		<h2 class="main__title">Découvrez nos partenaires</h2>
 		<div class="partenaire__content">
-			<img src="./images/partner/airam.png" alt="">
-			<img src="./images/partner/alti-trading.png" alt="">
-			<img src="./images/partner/educatel.png" alt="">
-			<img src="./images/partner/esoad.png" alt="">
-			<img src="./images/partner/formalis.png" alt="">
-			<img src="./images/partner/lafontaine.png" alt="">
-			<img src="./images/partner/Online.png" alt="">
-			<img src="./images/partner/walter-learning.png" alt="">
-			<img src="./images/partner/walter-sante.png" alt="">
-			<img src="./images/partner/stardust masterclass.png" alt="" style="width: 8rem; height:auto">
-		</div>
+		{% for university in universities %}
+			<a href="{{ university.siteUrl }}">
+				<img src="{{ university.logoUrl }}" alt="{{ university.university }}">
+			</a>
+		{% endfor %}
 	</section>
 
 {% endblock %}
