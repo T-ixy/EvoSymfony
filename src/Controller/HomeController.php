@@ -15,18 +15,41 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
-    public function index(
-        SanctionsRepository $sanctionRepo,
-        CategoriesRepository $categoryRepo,
-        FormationsRepository $formationRepo,
-        UniversitiesRepository $universityRepo,
-        Request $request
-    ): Response {
+    /**
+     * @var SanctionsRepository
+     */
+    private SanctionsRepository $sanctionRepo;
 
-        $sanctions = $sanctionRepo->findAll();
-        $categories = $categoryRepo->findAll();
-        $universities = $universityRepo->findAll();
+    /**
+     * @var CategoriesRepository
+     */
+    private CategoriesRepository $categoryRepo;
+
+    /**
+     * @var FormationsRepository
+     */
+    private FormationsRepository $formationRepo;
+
+    /**
+     * @var UniversitiesRepository
+     */
+    private UniversitiesRepository $universityRepo;
+
+    public function __construct(SanctionsRepository $sanctionRepo, CategoriesRepository $categoryRepo, FormationsRepository $formationRepo, UniversitiesRepository $universityRepo) 
+    {
+        $this->sanctionRepo = $sanctionRepo;
+        $this->categoryRepo = $categoryRepo;
+        $this->formationRepo = $formationRepo;
+        $this->universityRepo = $universityRepo;
+    }
+
+    #[Route('/', name: 'app_home')]
+    public function index(Request $request): Response 
+    {
+
+        $sanctions = $this->sanctionRepo->findAll();
+        $categories = $this->categoryRepo->findAll();
+        $universities = $this->universityRepo->findAll();
         
 
         $searchData = new SearchData();
@@ -34,9 +57,9 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $formations = $formationRepo->findFormationsBySearch($searchData, $request);
+            $formations = $this->formationRepo->findFormationsBySearch($searchData, $request);
         } else {
-            $formations = $formationRepo->findAllPaginate($request);
+            $formations = $this->formationRepo->findAllPaginate($request);
         }
 
         return $this->render('home/index.html.twig', [
@@ -51,18 +74,12 @@ class HomeController extends AbstractController
     }
 
     #[Route('/{filter}', name: 'app_home_filter')]
-    public function filter(
-        SanctionsRepository $sanctionRepo,
-        CategoriesRepository $categoryRepo,
-        UniversitiesRepository $universityRepo,
-        FormationsRepository $formationRepo,
-        Request $request,
-        ?string $filter
-    ): Response {
+    public function filter(Request $request, ?string $filter): Response 
+    {
 
-        $sanctions = $sanctionRepo->findAll();
-        $categories = $categoryRepo->findAll();
-        $universities = $universityRepo->findAll();
+        $sanctions = $this->sanctionRepo->findAll();
+        $categories = $this->categoryRepo->findAll();
+        $universities = $this->universityRepo->findAll();
         
 
         $searchData = new SearchData();
@@ -70,9 +87,9 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $formations = $formationRepo->findFormationsBySearch($searchData, $request);
+            $formations = $this->formationRepo->findFormationsBySearch($searchData, $request);
         } else {
-            $formations = $formationRepo->findFiltered($filter, $request);
+            $formations = $this->formationRepo->findFiltered($filter, $request);
         }
 
         return $this->render('home/index.html.twig', [

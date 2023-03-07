@@ -78,7 +78,7 @@ class FormationsRepository extends ServiceEntityRepository
 
     public function findAllPaginate(Request $request): PaginationInterface
     {
-        $formations = $this->findAll();
+        $formations = $this->findBy([],['priority' => 'DESC']);
 
         $pagination = $this->paginator->paginate(
             $formations,
