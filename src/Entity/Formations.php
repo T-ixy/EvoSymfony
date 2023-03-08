@@ -191,6 +191,15 @@ class Formations
         return $this->prices;
     }
 
+    public function getFormatedPrice(string $accuracy = "Ar")
+    {
+        $accuracy = strtolower($accuracy);
+
+        $price = number_format($this->prices, 0, ',', ' ');
+
+        return $formatedPrice = ($accuracy == "ar") ?  $price . ' Ar' : $price . ' €' ;
+    }
+
     public function setPrices(?int $prices): self
     {
         $this->prices = $prices;

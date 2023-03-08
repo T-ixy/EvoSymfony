@@ -1,12 +1,168 @@
-{% extends 'base.html.twig' %}
+{% extends "./template.html.twig" %}
 
-{% block title %}Hello FormationsController!{% endblock %}
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
 
-{% block body %}
+{% block headContent %}
+	<div class="header__content">
+		<img src="{{ asset('images/afrique.png') }}" alt="l'Afrique 100% en ligne">
+		<h1>
+			<span>Découvrez</span><br>nos differentes
+			<b>formations</b>
+		</h1>
+		<div class="header__center">
+			<div class="header__center__form">
+				{% include "./components/searchForm.html.twig" with {form:form} %}
 
-<div class="example-wrapper">
-    <h1>{{ formation.title }}</h1>
+				<button class="button button--yellow" id="filter">Catégories</button>
+				<div class="burger">
+					<div class="burger__bar"></div>
+				</div>
+			</div>
+		</div>
+		<img src="{{ asset('images/header-formation.png') }}" alt="l'Afrique 100% en ligne">
+	</div>
+{% endblock %}
 
-    
-</div>
+{% block main %}
+	<div class="main--formation">
+		<aside class="filter filter__main main--formation__left" id="filter-target">
+			<div>
+				<h2 class="filter__title">
+					Niveaux
+				</h2>
+				<ul class="filter__elements aside__filter">
+					{% for sanction in sanctions %}
+						<li>
+							<a href="{{ path('app_home_filter', {filter:sanction.sanction}) }}" class="button">{{ sanction.sanction }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="filter__dom">
+				<h2 class="filter__title">
+					Domaines
+				</h2>
+
+				<ul class="filter__elements filter__elements--dom aside__filter">
+					{% for category in categories %}
+						<li>
+							<a href="{{ path('app_home_filter', {filter:category.category}) }}">
+								<img src="{{ category.iconeUrl }}" class="filter__img">
+								{{ category.category }}
+							</a>
+						</li>
+					{% endfor %}
+
+				</ul>
+			</div>
+		</aside>
+
+		<section class="formations">
+			<h2 class="formations__title">{{ formation.title }}</h2>
+			<div class="formations__menu">
+				<ul>
+					<li><a href="#generalite">Généralité</a></li>
+					<li><a href="#prerequis">Prérequis</a></li>
+					<li><a href="#objectif">Objectifs</a></li>
+					<li><a href="#finalite">Finalités</a></li>
+					<li><a href="#contenue">Contenu</a></li>
+					<li><a href="#sanction">Sanction</a></li>
+				</ul>
+			</div>
+			<div id="generalite">
+
+				{{ formation.generality }}
+
+			</div>
+			<div id="prerequis">
+				<h3>Prérequis</h3>
+				<ul class="formations__list">
+
+					{{ formation.prerequisite }}
+
+				</ul>
+			</div>
+			<div id="objectif">
+				<h3>Objectifs</h3>
+
+				{{ formation.purpose }}
+
+			</div>
+			<div id="finalite">
+
+				{{ formation.finality }}
+
+			</div>
+			<div id="contenue">
+
+				{{ formation.contents }}
+
+			</div>
+			<div id="sanction">
+				<h3>sanction</h3>
+				{{ formation.sanction.sanction }}
+			</div>
+		</section>
+
+		<aside class="main--formation__right">
+			<div class="card card--aside">
+				<div class="card__header">
+					<h3 class="card__title">resume</h3>
+				</div>
+				<div class="card__body">
+					<h3 class="card__body__title">{{ formation.university.university }}</h3>
+					<ul>
+						<li>
+							{% for category in formation.categories %}
+								<img class="filter__img" src="{{ category.iconeUrl }}"/>
+								{{ category.category}}
+							{% endfor %}
+						</li>
+						<li>
+							<i class="fa-solid fa-medal"></i>
+
+							{{ formation.prerequisite }}
+
+						</li>
+						<li>
+							<i class="fa-solid fa-graduation-cap"></i>
+							{{ formation.sanction.sanction }}
+						</li>
+						<li>
+							<i class="fa-solid fa-display"></i>
+							100% en ligne
+						</li>
+						<li>
+							<i class="fa-regular fa-clock"></i>
+							{{ formation.duration }}
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div>
+				<div class="card card--aside">
+					<div class="card__header">
+						<h3 class="card__title">Tarif</h3>
+						<span>
+							<i class="fa-solid fa-money-bill-wave"></i>
+							{{ formation.getFormatedPrice("Ar") }}
+						</span>
+						<hr style="width: 75% ;">
+					</div>
+					<div class="card__body">
+						<p>Moyens de paiement disponibles</p>
+						<img src="{{ asset('images/Paiement.png') }}" alt="" style="margin: .5rem 0;">
+					</div>
+				</div>
+
+				<a href="{{ formation.university.loginUrl }}" class="button button--yellow button--aside" target="blank">S'inscrire</a>
+			</div>
+
+
+		</aside>
+	</div>
 {% endblock %}
