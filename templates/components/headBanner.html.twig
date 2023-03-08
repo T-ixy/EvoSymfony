@@ -1,0 +1,24 @@
+<div class="header__content">
+	<img src="{{ asset('images/afrique.png') }}" alt="l'Afrique 100% en ligne">
+	<h1>
+		<b>Décrochez</b>
+		vos
+		<b>diplômes</b>,
+		<b>certificats</b>,
+		<b>attestations</b>
+		depuis chez vous à des
+		<b>prix préférentiels</b>
+	</h1>
+	<div class="header__center">
+		<div class="header__center__form">
+
+			{% include "./components/searchForm.html.twig" with {form:form} %}
+
+			<button class="button button--yellow" id="filter">Catégories</button>
+			<div class="burger">
+				<div class="burger__bar"></div>
+			</div>
+		</div>
+	</div>
+	<img src="{{ asset('images/header-right.png') }}" alt="l'Afrique 100% en ligne" style="width: 18rem;">
+</div>

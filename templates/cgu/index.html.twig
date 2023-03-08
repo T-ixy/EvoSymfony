@@ -1,0 +1,70 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block headContent %}
+	{% include "./components/headBanner.html.twig" %}
+{% endblock %}
+
+{% block main %}
+	<div class="contactBox">
+		<div class="cont">
+			<h2 class="titleBox">CONTACTEZ-NOUS !</h2>
+			<hr class="separate">
+			<div class="listCont">
+
+				<div class="contentList">
+
+					<ul>
+						<li>
+							<i class="fa-solid fa-phone "></i>
+							<a href="tel:261345320222">- 261 34 53 202 22</a>
+						</li>
+						<li>
+							<i class="fa-solid fa-envelope "></i>
+							<a href="mailto:service@evolutiv-online.com">service@evolutiv-online.com</a>
+						</li>
+						<li>
+							<i class="fa-solid fa-location-dot "></i>
+							Lot VG 26 Ter Antsahabe - Antananarivo 101
+						</li>
+					</ul>
+					<ul class="social">
+						<li>
+							<a href="https://www.facebook.com/profile.php?id=100075925192914" target="_blank">
+								<i class="fa-2x fa-brands fa-facebook-f"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/company/evolutiv-online/" target="_blank">
+								<i class="fa-2x fa-brands fa-linkedin"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://instagram.com/evolutiv.formation?igshid=YmMyMTA2M2Y=" target="_blank">
+								<i class="fa-2x fa-brands fa-instagram"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<img src="{{ asset('images/contactForm.png') }}" class="form-img">
+			</div>
+
+		</div>
+
+		<div class="mailSpace">
+			<h2 class="titleBox">LAISSEZ-NOUS UN MESSAGE !</h2>
+            <hr class="separate">
+			<form action="#" class="message" id="message" method="POST">
+				<input type="text" name="nom" placeholder="Entrer votre nom" id="nom" required><br>
+				<input type="email" name="mail" placeholder="Entrer votre email" id="mail" required><br>
+				<input type="text" name="sujet" placeholder="Entrer le sujet de votre message" id="sujet" required><br>
+				<textarea name="message" id="textMessage" placeholder="Ici votre message" id="message" required></textarea><br>
+				<input type="submit" name="submit" value="Envoyer le message" class="button button--yellow">
+				<div id="response"></div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

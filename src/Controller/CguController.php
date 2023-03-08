@@ -9,12 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FormationsController extends Construct
+class CguController extends Construct
 {
-    #[Route('/formations/{id}', name: 'app_formations')]
-    public function index(int $id, Request $request): Response
+    #[Route('/contact', name: 'app_contact')]
+    public function index(Request $request): Response
     {
-        $formation = $this->formationRepo->findOneBy(['id' => $id]);
 
         $searchData = new SearchData();
         $form = $this->createForm(SearchType::class, $searchData);
@@ -25,11 +24,10 @@ class FormationsController extends Construct
             return $this->redirectToRoute('app_home', ['formationSearch' => http_build_query($searchData)]);
         }
 
-        return $this->render('formations/index.html.twig', [
-            'Page_title'   => $formation->getTitle(),
+        return $this->render('cgu/index.html.twig', [
+            'Page_title'   => "Contacter-nous",
             'universities' => $this->universities,
             'sanctions'    => $this->sanctions,
-            'formation'    => $formation,
             'categories'   => $this->categories,
             'form'         => $form->createView()
         ]);
