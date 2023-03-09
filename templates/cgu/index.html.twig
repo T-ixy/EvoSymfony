@@ -56,15 +56,25 @@
 
 		<div class="mailSpace">
 			<h2 class="titleBox">LAISSEZ-NOUS UN MESSAGE !</h2>
-            <hr class="separate">
-			<form action="#" class="message" id="message" method="POST">
+			<hr
+			class="separate">
+			{# <form action="#" class="message" id="message" method="POST">
 				<input type="text" name="nom" placeholder="Entrer votre nom" id="nom" required><br>
 				<input type="email" name="mail" placeholder="Entrer votre email" id="mail" required><br>
 				<input type="text" name="sujet" placeholder="Entrer le sujet de votre message" id="sujet" required><br>
 				<textarea name="message" id="textMessage" placeholder="Ici votre message" id="message" required></textarea><br>
 				<input type="submit" name="submit" value="Envoyer le message" class="button button--yellow">
 				<div id="response"></div>
-			</form>
+			</form> #}
+
+			{{ form_start(messageForm, {'attr': {'class': 'message', 'id': 'message'}}) }}
+			{{ form_widget(messageForm.name) }}
+			{{ form_widget(messageForm.mail) }}
+			{{ form_widget(messageForm.subject) }}
+			{{ form_widget(messageForm.message) }}
+			</br>
+			<input type="submit" name="submit" value="Envoyer le message" class="button button--yellow">
+			{{ form_end(messageForm) }}
 		</div>
 	</div>
 {% endblock %}
