@@ -44,4 +44,46 @@ class CguController extends Construct
             'messageForm'         => $messageForm->createView()
         ]);
     }
+
+    #[Route('/mention-legale', name: 'app_mention')]
+    public function mention(Request $request): Response
+    {
+
+        $searchData = new SearchData();
+        $form = $this->createForm(SearchType::class, $searchData);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->redirectToRoute('app_home', ['formationSearch' => http_build_query($searchData)]);
+        }
+
+        return $this->render('cgu/mention.html.twig', [
+            'Page_title'          => "Mentions legales",
+            'universities'        => $this->universities,
+            'sanctions'           => $this->sanctions,
+            'categories'          => $this->categories,
+            'form'                => $form->createView(),
+        ]);
+    }
+
+    #[Route('/condition-utilisation', name: 'app_condition')]
+    public function condition(Request $request): Response
+    {
+
+        $searchData = new SearchData();
+        $form = $this->createForm(SearchType::class, $searchData);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->redirectToRoute('app_home', ['formationSearch' => http_build_query($searchData)]);
+        }
+
+        return $this->render('cgu/condition.html.twig', [
+            'Page_title'          => "Condition d'utilisation",
+            'universities'        => $this->universities,
+            'sanctions'           => $this->sanctions,
+            'categories'          => $this->categories,
+            'form'                => $form->createView(),
+        ]);
+    }
 }
