@@ -15,4 +15,12 @@ class AdminController extends AbstractController
             'Page_title' => "Admin ~ Formations",
         ]);
     }
+
+    #[Route('/profil', name: 'app_profil')]
+    public function profil(): Response
+    {
+        return $this->render('admin/profil.html.twig', [
+            'Page_title' => "Admin ~ Profil",
+        ]);
+    }
 }
