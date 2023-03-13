@@ -47,7 +47,7 @@ class HomeController extends Construct
 
     }
 
-    #[Route('/{filter}', name: 'app_home_filter')]
+    #[Route('/EvolutiV/{filter}', name: 'app_home_filter')]
     public function filter(Request $request, ?string $filter): Response 
     {
         
