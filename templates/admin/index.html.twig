@@ -5,31 +5,111 @@
 {% endblock %}
 
 {% block main %}
-	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+	<h2>Les formations</h2>
+	<div class="table-responsive">
+		<table class="table table-striped table-sm">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Titre</th>
+					<th scope="col">Categories</th>
+					<th scope="col">Sanction</th>
+					<th scope="col">Prix</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for formation in formations %}
+					<tr>
+						<td>{{ formation.id }}</td>
+						<td>{{ formation.title }}</td>
+						<td>
+							{% for category in formation.categories %}
+								{{ category.category }}
+							{% endfor %}
+						</td>
+						<td>{{ formation.sanction.sanction }}</td>
+						<td>{{ formation.prices }}
+							Ar</td>
+						<td>
+							<a href="{{ path('app_delete', {id:formation.id, data:'formation'}) }}">Delete</a>
+						</td>
+						<td>
+							<a href='#' data-bs-toggle="modal" data-bs-target="#formationNo{{ formation.id }}">Voir</a>
+						</td>
+					</tr>
 
-		<h2>Les formations</h2>
-		<div class="table-responsive">
-			<table class="table table-striped table-sm">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Header</th>
-						<th scope="col">Header</th>
-						<th scope="col">Header</th>
-						<th scope="col">Header</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1,001</td>
-						<td>random</td>
-						<td>data</td>
-						<td>placeholder</td>
-						<td>text</td>
-					</tr>
-					
-				</tbody>
-			</table>
-		</div>
-	</main>
+
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+		{% for formation in formations %}
+			<div class="modal fade" id="formationNo{{ formation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" style="max-width: 90%;">
+					<div class="modal-content" style="padding: 3%">
+						<div class="modal-header">
+							<h1 style="font-size:1.5rem">{{ formation.title }}</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<table class="table table-striped table-bordered caption-top">
+
+								<tbody>
+									<tr>
+										<th>Nom de la formation</th>
+										<td colspan="2">{{ formation.title | upper }}</td>
+									</tr>
+									<tr>
+										<th>Généralité</th>
+										<td colspan="2">{{ formation.generality }}</td>
+									</tr>
+									<tr>
+										<th>But da la formation</th>
+										<td colspan="2">{{ formation.purpose }}</td>
+									</tr>
+									<tr>
+										<th rowspan="5">A propos de la formation</th>
+										<td style="text-decoration:underline;">Pré-requis</td>
+										<td>{{ formation.prerequisite }}</td>
+									</tr>
+									<tr>
+										<td style="text-decoration:underline;">Durée</td>
+										<td>{{ formation.duration }}</td>
+									</tr>
+									<tr>
+										<td style="text-decoration:underline;">Prix</td>
+										<td>{{ formation.prices }}
+											Ar</td>
+									</tr>
+									<tr>
+										<td style="text-decoration:underline;">Finalitée</td>
+										<td>{{ formation.finality }}</td>
+									</tr>
+									<tr>
+										<td style="text-decoration:underline;">Sanction obtenue</td>
+										<td>{{ formation.sanction.sanction }}</td>
+									</tr>
+									<tr>
+										<th>Contenue de la formation</th>
+										<td colspan="2">{{ formation.contents }}</td>
+									</tr>
+									<tr>
+										<th>Vignette</th>
+										<td colspan="2">
+											<img src="{{ formation.vignetteUrl }}" style="width:25%; height:auto">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
