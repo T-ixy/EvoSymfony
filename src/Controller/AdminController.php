@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Formations;
+use App\Form\FormationsType;
 use App\Functions\Construct;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,11 +27,37 @@ class AdminController extends Construct
     }
 
     #[Route('/admin/formation/add', name: 'app_admin_formation')]
-    public function formationAdd(): Response
+    public function formationAdd(Request $request, EntityManagerInterface $manager): Response
     {
+        $formation = new Formations();
+
+        $formationForm = $this->createForm(FormationsType::class, $formation);
+        $formationForm->handleRequest($request);
+
+        if ($formationForm->isSubmitted() && $formationForm->isValid()) {
+            $file = $formationForm->get('vignette_url')->getData();
+            $uni = $formationForm->get('university')->getData();
+            $filename = $file->getClientOriginalName();
+            $url = $this->getParameter('formations_directory') . '/' . $uni->getuniversity() . '/' . $filename;
+
+            $formation->setVignetteUrl($url);
+
+            $manager->persist($formation);
+            $manager->flush();
+
+            if ($file instanceof UploadedFile) {
+                $file->move(
+                    $this->getParameter('formations_directory') . '/' . $uni->getuniversity(),
+                    $filename
+                );
+            }
+            return $this->redirectToRoute('app_admin_formation');
+
+        }
 
         return $this->render('admin/formationAdd.html.twig', [
-            'Page_title' => "Admin ~ Ajout de formation"
+            'Page_title' => "Admin ~ Ajout de formation",
+            'formationForm' => $formationForm->createView()
         ]);
     }
 

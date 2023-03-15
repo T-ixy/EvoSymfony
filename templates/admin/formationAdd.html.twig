@@ -5,5 +5,66 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Formation tres long</h1>
+	<h2>Ajouter une formation</h2>
+	{{ form_start(formationForm, {'attr': {'class':'row g-3'}}) }}
+
+	<div class="mb-3">
+		{{ form_widget(formationForm.title) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(formationForm.generality) }}
+	</div>
+
+	<div class="col-md-6">
+		{{ form_widget(formationForm.prerequisite) }}
+	</div>
+
+	<div class="col-md-6">
+		{{ form_widget(formationForm.finality) }}
+	</div>
+
+	<div class="col-6">
+		{{ form_widget(formationForm.duration) }}
+	</div>
+
+	<div class="col-6">
+		{{ form_widget(formationForm.prices) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(formationForm.purpose) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(formationForm.contents) }}
+	</div>
+
+	<div class="form-check">
+		{{ form_widget(formationForm.priority) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(formationForm.vignette_url) }}
+	</div>
+
+	<div class="mb-3">
+		<span style="font-weight:500;text-transform: uppercase;text-decoration: underline;font-size: 1rem;">Les sanctions</span>
+		{{ form_widget(formationForm.sanction) }}
+	</div>
+
+	<div class="mb-3">
+		<span style="font-weight:500;text-transform: uppercase;text-decoration: underline;font-size: 1rem;">Les catégories</span>
+		{{ form_widget(formationForm.categories) }}
+	</div>
+
+	<div class="mb-3">
+		<span style="font-weight:500;text-transform: uppercase;text-decoration: underline;font-size: 1rem;">Les universités</span>
+		{{ form_widget(formationForm.university) }}
+	</div>
+
+
+	<input type="submit" class="col-12 btn btn-primary" value="Ajouter">
+	{{ form_end(formationForm) }}
+
 {% endblock %}
