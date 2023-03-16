@@ -63,16 +63,16 @@
 									</tr>
 									<tr>
 										<th>Généralité</th>
-										<td colspan="2">{{ formation.generality }}</td>
+										<td colspan="2">{{ formation.generality|raw }}</td>
 									</tr>
 									<tr>
 										<th>But da la formation</th>
-										<td colspan="2">{{ formation.purpose }}</td>
+										<td colspan="2">{{ formation.purpose |raw}}</td>
 									</tr>
 									<tr>
 										<th rowspan="5">A propos de la formation</th>
 										<td style="text-decoration:underline;">Pré-requis</td>
-										<td>{{ formation.prerequisite }}</td>
+										<td>{{ formation.prerequisite |raw}}</td>
 									</tr>
 									<tr>
 										<td style="text-decoration:underline;">Durée</td>
@@ -85,7 +85,7 @@
 									</tr>
 									<tr>
 										<td style="text-decoration:underline;">Finalitée</td>
-										<td>{{ formation.finality }}</td>
+										<td>{{ formation.finality |raw}}</td>
 									</tr>
 									<tr>
 										<td style="text-decoration:underline;">Sanction obtenue</td>
@@ -93,7 +93,7 @@
 									</tr>
 									<tr>
 										<th>Contenue de la formation</th>
-										<td colspan="2">{{ formation.contents }}</td>
+										<td colspan="2">{{ formation.contents|raw }}</td>
 									</tr>
 									<tr>
 										<th>Vignette</th>

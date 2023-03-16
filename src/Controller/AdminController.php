@@ -51,7 +51,7 @@ class AdminController extends Construct
                     $filename
                 );
             }
-            return $this->redirectToRoute('app_admin_formation');
+            return $this->redirectToRoute('app_admin');
 
         }
 

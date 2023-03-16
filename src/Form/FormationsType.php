@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class FormationsType extends AbstractType
 {
@@ -26,31 +27,31 @@ class FormationsType extends AbstractType
                     'placeholder' => 'Le titre de la formation'
                 ]
             ])
-            ->add('generality', TextareaType::class, [
+            ->add('generality', CKEditorType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Généralite sur la formation'
                 ]
             ])
-            ->add('prerequisite', TextareaType::class, [
+            ->add('prerequisite', CKEditorType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Les pré-requis pour la formation'
                 ]
             ])
-            ->add('purpose', TextareaType::class, [
+            ->add('purpose', CKEditorType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Le but de la formation'
                 ]
             ])
-            ->add('finality', TextareaType::class, [
+            ->add('finality', CKEditorType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Finalité de la formation'
                 ]
             ])
-            ->add('contents', TextareaType::class, [
+            ->add('contents', CKEditorType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Le contenue de la formation'

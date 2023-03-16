@@ -74,31 +74,31 @@
 			</div>
 			<div id="generalite">
 
-				{{ formation.generality }}
+				{{ formation.generality |raw}}
 
 			</div>
 			<div id="prerequis">
 				<h3>Prérequis</h3>
 				<ul class="formations__list">
 
-					{{ formation.prerequisite }}
+					{{ formation.prerequisite|raw }}
 
 				</ul>
 			</div>
 			<div id="objectif">
 				<h3>Objectifs</h3>
 
-				{{ formation.purpose }}
+				{{ formation.purpose |raw }}
 
 			</div>
 			<div id="finalite">
 
-				{{ formation.finality }}
+				{{ formation.finality |raw}}
 
 			</div>
 			<div id="contenue">
 
-				{{ formation.contents }}
+				{{ formation.contents|raw }}
 
 			</div>
 			<div id="sanction">
@@ -124,7 +124,7 @@
 						<li>
 							<i class="fa-solid fa-medal"></i>
 
-							{{ formation.prerequisite }}
+							{{ formation.prerequisite |raw}}
 
 						</li>
 						<li>
