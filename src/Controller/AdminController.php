@@ -6,6 +6,7 @@ use App\Entity\Formations;
 use App\Form\FormationsType;
 use App\Functions\Construct;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,10 +28,21 @@ class AdminController extends Construct
     }
 
     #[Route('/admin/formation/add', name: 'app_admin_formation')]
-    public function formationAdd(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/admin/formation/update/{id}', name: 'app_admin_formationUp')]
+    public function formationAdd(Request $request, EntityManagerInterface $manager, ?int $id = null): Response
     {
-        $formation = new Formations();
 
+        if ($id) {
+            $formation = $this->formationRepo->find($id);
+
+            if (!$formation) {
+                throw new Exception('Aucune formation selectionner', 1);
+            }
+        } else {
+            $formation = new Formations();
+        }
+
+        $formation->setVignetteUrl('');
         $formationForm = $this->createForm(FormationsType::class, $formation);
         $formationForm->handleRequest($request);
 
@@ -52,7 +64,6 @@ class AdminController extends Construct
                 );
             }
             return $this->redirectToRoute('app_admin');
-
         }
 
         return $this->render('admin/formationAdd.html.twig', [
@@ -80,7 +91,7 @@ class AdminController extends Construct
                 $manager->flush();
 
                 return $this->redirectToRoute('app_admin');
-                
+
                 break;
         }
     }

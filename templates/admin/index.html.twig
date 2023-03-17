@@ -32,10 +32,13 @@
 						<td>{{ formation.prices }}
 							Ar</td>
 						<td>
-							<a href="{{ path('app_delete', {id:formation.id, data:'formation'}) }}">Delete</a>
+							<a href='#' data-bs-toggle="modal" data-bs-target="#formationNo{{ formation.id }}">Voir</a>
 						</td>
 						<td>
-							<a href='#' data-bs-toggle="modal" data-bs-target="#formationNo{{ formation.id }}">Voir</a>
+							<a href="{{ path('app_admin_formationUp', {id:formation.id}) }}">Modiffier</a>
+						</td>
+						<td>
+							<a href="{{ path('app_delete', {id:formation.id, data:'formation'}) }}">Supprimer</a>
 						</td>
 					</tr>
 
