@@ -1,0 +1,26 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block main %}
+	<h2>Ajouter une vcategorie</h2>
+	{{ form_start(categoryForm, {'attr': {'class':'row g-3'}}) }}
+
+	<div class="mb-3">
+		{{ form_widget(categoryForm.Category) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(categoryForm.icone_url) }}
+	</div>
+
+	<div class="col-md-6">
+		{{ form_widget(categoryForm.color) }}
+	</div>
+
+	<input type="submit" class="col-12 btn btn-primary" value="Ajouter">
+	{{ form_end(categoryForm) }}
+
+{% endblock %}

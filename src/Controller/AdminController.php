@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Formations;
+use App\Form\CategoriesType;
 use App\Form\FormationsType;
 use App\Functions\Construct;
 use Doctrine\ORM\EntityManagerInterface;
@@ -72,11 +74,41 @@ class AdminController extends Construct
         ]);
     }
 
-    #[Route('/profil', name: 'app_profil')]
-    public function profil(): Response
+    #[Route('/admin/categories', name: 'app_admin_categories')]
+    public function categories(): Response
     {
-        return $this->render('admin/profil.html.twig', [
-            'Page_title' => "Admin ~ Profil",
+
+        $categories = $this->categories;
+
+        return $this->render('admin/categories.html.twig', [
+            'Page_title' => "Admin ~ categories",
+            'categories' => $categories
+        ]);
+    }
+
+    #[Route('/admin/categories/Add', name: 'app_admin_categoriesAdd')]
+    #[Route('/admin/categories/Update/{id}', name: 'app_admin_categoriesUp')]
+    public function categoriesAdd(Request $request, EntityManagerInterface $manager, ?int $id = null): response
+    {
+        if ($id) {
+            $category = $this->categoryRepo->find($id);
+        } else{
+            $category = new Categories();
+        }
+
+        $categoryForm = $this->createForm(CategoriesType::class, $category);
+        $categoryForm->handleRequest($request);
+
+        if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
+            $manager->persist($category);
+            $manager->flush();
+
+            return $this->redirectToRoute('app_admin_categories');
+        }
+
+        return $this->render('admin/categoryAdd.html.twig', [
+            'Page_title' => "Admin ~ Ajout de categories",
+            'categoryForm' => $categoryForm->createView()
         ]);
     }
 
@@ -84,13 +116,23 @@ class AdminController extends Construct
     public function delete(int $id, string $data, EntityManagerInterface $manager)
     {
         switch ($data) {
-            case 'formation':
+            case 'formations':
                 $formation = $this->formationRepo->find($id);
 
                 $manager->remove($formation);
                 $manager->flush();
 
                 return $this->redirectToRoute('app_admin');
+
+                break;
+
+            case 'categories':
+                $category = $this->categoryRepo->find($id);
+
+                $manager->remove($category);
+                $manager->flush();
+
+                return $this->redirectToRoute('app_admin_categories');
 
                 break;
         }
