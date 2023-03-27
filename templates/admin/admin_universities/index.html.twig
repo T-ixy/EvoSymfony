@@ -1,0 +1,49 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block main %}
+	<h2>Les universities</h2>
+	<div class="table-responsive">
+		<table class="table table-striped table-sm">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Logo</th>
+					<th scope="col">Lien de connexion</th>
+					<th scope="col">Site web</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for university in universities %}
+					<tr>
+						<td>{{ university.id }}</td>
+						<td>{{ university.university }}</td>
+						<td>
+							<img src="{{ asset(university.logoUrl) }}" style="width:10rem; height:auto; margin:2rem">
+						</td>
+                        <td>
+                            <a href="{{ university.loginUrl }}" target="blank" >{{ university.loginUrl }}</a>
+                        </td>
+                        <td>
+                            <a href="{{ university.siteUrl }}" target="blank" >{{ university.university }}</a>
+                        </td>
+						<td>
+							<a href="{{ path('app_admin_universitiesUp', {id:university.id}) }}">Modiffier</a>
+						</td>
+						<td>
+							<a href="{{ path('app_delete', {id:university.id,data:'universities'}) }}">Supprimer</a>
+						</td>
+					</tr>
+
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+	</div>
+{% endblock %}

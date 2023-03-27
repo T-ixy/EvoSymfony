@@ -57,6 +57,10 @@
 			white-space: nowrap;
 			-webkit-overflow-scrolling: touch;
 		}
+
+		.table td{
+			vertical-align: middle;
+		}
 	</style>
 	<link href="{{ asset('dashbord/dashboard.css') }}" rel="stylesheet">
 {% endblock %}
@@ -130,13 +134,13 @@
 					</h6>
 					<ul class="nav flex-column mb-2">
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{ path('app_admin_universities') }}">
 								<span data-feather="file-text" class="align-text-bottom"></span>
 								Les partenaires
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="{{ path('app_admin_universitiesAdd') }}">
 								<span data-feather="file-text" class="align-text-bottom"></span>
 								Ajouter une université
 							</a>

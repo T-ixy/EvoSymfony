@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block main %}
-	<h2>Ajouter une formation</h2>
+	{% if app.request.attributes.get('_route') == 'app_admin_formation' %}
+        <h2>Ajouter une formation</h2>
+    {% elseif app.request.attributes.get('_route') == 'app_admin_formationUp' %}
+        <h2>Modiffier la formation</h2>
+    {% endif %}
+	
 	{{ form_start(formationForm, {'attr': {'class':'row g-3'}}) }}
 
 	<div class="mb-3">

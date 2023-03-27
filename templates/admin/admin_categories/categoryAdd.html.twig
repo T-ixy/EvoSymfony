@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block main %}
-	<h2>Ajouter une vcategorie</h2>
+	{% if app.request.attributes.get('_route') == 'app_admin_categoriesAdd' %}
+        <h2>Ajouter une catégorie</h2>
+    {% elseif app.request.attributes.get('_route') == 'app_admin_categoriesUp' %}
+        <h2>Modiffier la catégorie</h2>
+    {% endif %}
 	{{ form_start(categoryForm, {'attr': {'class':'row g-3'}}) }}
 
 	<div class="mb-3">

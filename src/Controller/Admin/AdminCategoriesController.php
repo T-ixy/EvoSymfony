@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Categories;
 use App\Form\CategoriesType;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategoriesAdminController extends Construct
+class AdminCategoriesController extends Construct
 {
     #[Route('/admin/categories', name: 'app_admin_categories')]
     public function index(): Response
@@ -18,7 +18,7 @@ class CategoriesAdminController extends Construct
 
         $categories = $this->categories;
 
-        return $this->render('categories_admin/index.html.twig', [
+        return $this->render('admin/admin_categories/index.html.twig', [
             'Page_title' => "Admin ~ categories",
             'categories' => $categories
         ]);
@@ -44,7 +44,7 @@ class CategoriesAdminController extends Construct
             return $this->redirectToRoute('app_admin_categories');
         }
 
-        return $this->render('categories_admin/categoryAdd.html.twig', [
+        return $this->render('admin/admin_categories/categoryAdd.html.twig', [
             'Page_title' => "Admin ~ Ajout de categories",
             'categoryForm' => $categoryForm->createView()
         ]);

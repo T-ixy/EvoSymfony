@@ -86,6 +86,16 @@ class Construct extends AbstractController
                 return $this->redirectToRoute('app_admin_categories');
 
                 break;
+
+            case 'universities':
+                $university = $this->universityRepo->find($id);
+
+                $manager->remove($university);
+                $manager->flush();
+
+                return $this->redirectToRoute('app_admin_universities');
+
+                break;
         }
     }
 }

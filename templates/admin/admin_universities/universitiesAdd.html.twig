@@ -1,0 +1,37 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block main %}
+	{% if app.request.attributes.get('_route') == 'app_admin_universitiesAdd' %}
+		<h2>Ajouter une université</h2>
+	{% elseif app.request.attributes.get('_route') == 'app_admin_universitiesUp' %}
+		<h2>Modiffier une université</h2>
+	{% endif %}
+
+
+	{{ form_start(universitiesForm, {'attr': {'class':'row g-3'}}) }}
+
+	<div class="mb-3">
+		{{ form_widget(universitiesForm.University) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(universitiesForm.logo_url) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(universitiesForm.login_url) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_widget(universitiesForm.site_url) }}
+	</div>
+
+	<input type="submit" class="col-12 btn btn-primary" value="Ajouter">
+
+	{{ form_end(universitiesForm) }}
+
+{% endblock %}

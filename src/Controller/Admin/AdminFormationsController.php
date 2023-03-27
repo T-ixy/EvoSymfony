@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Formations;
 use App\Form\FormationsType;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FormationAdminController extends Construct
+class AdminFormationsController extends Construct
 {
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
@@ -20,7 +20,7 @@ class FormationAdminController extends Construct
 
         $formations = $this->formationRepo->findAll();
 
-        return $this->render('formation_admin/index.html.twig', [
+        return $this->render('admin/admin_formation/index.html.twig', [
             'Page_title' => "Admin ~ Formations",
             'formations' => $formations
         ]);
@@ -65,7 +65,7 @@ class FormationAdminController extends Construct
             return $this->redirectToRoute('app_admin');
         }
 
-        return $this->render('formation_admin/formationAdd.html.twig', [
+        return $this->render('admin/admin_formation/formationAdd.html.twig', [
             'Page_title' => "Admin ~ Ajout de formation",
             'formationForm' => $formationForm->createView()
         ]);
