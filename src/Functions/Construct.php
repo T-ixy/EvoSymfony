@@ -96,6 +96,16 @@ class Construct extends AbstractController
                 return $this->redirectToRoute('app_admin_universities');
 
                 break;
+
+            case 'Sanction':
+                $sanction = $this->sanctionRepo->find($id);
+
+                $manager->remove($sanction);
+                $manager->flush();
+
+                return $this->redirectToRoute('app_admin_sanction');
+
+                break;
         }
     }
 }

@@ -1,0 +1,71 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block main %}
+	<h2>
+		Les sanctions
+		<small style="font-size:1.3rem">
+			<a href="#" data-bs-toggle="modal" data-bs-target="#ajout">Ajouter</a>
+		</small>
+	</h2>
+	<div class="modal fade" id="ajout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="max-width: 90%;">
+			<div class="modal-content" style="padding: 3%">
+				<div class="modal-header">
+					<h1 style="font-size:1.5rem">Ajouter une nouvelle sanction</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					{{ form_start(sanctionForm) }}
+
+						<div class="mb-3">
+							{{ form_widget(sanctionForm.Sanction) }}
+						</div>
+
+						<input type="submit" class="btn btn-primary container" value="Ajouter">
+
+					{{ form_end(sanctionForm) }}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped table-sm">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Titre</th>
+					<th scope="col">Formation lier</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for sanction in sanctions %}
+					<tr>
+						<td>{{ sanction.id }}</td>
+						<td>{{ sanction.sanction }}</td>
+						<td>
+							<ul>
+								{% for formation in sanction.formations %}
+									<li>{{ formation.title }}</li>
+								{% endfor %}
+							</ul>
+						</td>
+						<td>
+							<a href="{{ path('app_delete', {id:sanction.id, data:'Sanction'}) }}">Supprimer</a>
+						</td>
+					</tr>
+
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+	</div>
+{% endblock %}
