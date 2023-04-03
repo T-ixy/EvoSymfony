@@ -8,7 +8,7 @@
 	<h2>
 		Les utilisateurs
 		<small style="font-size:1.3rem">
-			<a href="#">Ajouter</a>
+			<a href="{{ path('app_profil_add') }}">Ajouter</a>
 		</small>
 	</h2>
 	<div class="table-responsive">
@@ -32,7 +32,7 @@
 						</td>
 						<td>{{ user.getFormatedRoles }}</td>
 						<td>
-							<a href="#">Modiffier</a>
+							<a href="{{ path('app_profil_update',{id:user.id}) }}">Modiffier</a>
 						</td>
 						<td>
 							<a href="{{ path('app_delete', {id:user.id,data:'User'}) }}">Supprimer</a>

@@ -1,0 +1,35 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}
+	{{ Page_title }}
+{% endblock %}
+
+{% block main %}
+	{% if app.request.attributes.get('_route') == 'app_profil_add' %}
+        <h2>Ajouter un utilisateur</h2>
+    {% elseif app.request.attributes.get('_route') == 'app_profil_update' %}
+        <h2>Modiffier un utilisateur</h2>
+    {% endif %}
+	
+    {{ form_start(userForm) }}
+
+    <div class="mb-3">
+        {{ form_widget(userForm.name) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_widget(userForm.email) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_widget(userForm.roles) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_widget(userForm.password) }}
+    </div>
+
+    <input type="submit" value="S'inscrire" class="btn btn-primary container-fluid">
+
+    {{ form_end(userForm) }}
+{% endblock %}

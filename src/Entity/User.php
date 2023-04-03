@@ -75,11 +75,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         switch ($roles) {
             case ["ROLE_USER"]:
-                return 'Administrateur';
-                break;
-            
-            default:
                 return 'Utilisateur';
+                break;
+
+            default:
+                return 'Administrateur';
                 break;
         }
     }
