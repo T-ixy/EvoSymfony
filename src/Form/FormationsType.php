@@ -22,6 +22,7 @@ class FormationsType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
+                'label' => false,
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Le titre de la formation'
@@ -58,12 +59,16 @@ class FormationsType extends AbstractType
                 ]
             ])
             ->add('prices', NumberType::class, [
+                'label' => false,
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Le prix de la formation'
                 ]
             ])
             ->add('duration', TextType::class, [
+                'label' => false,
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Ladurée de la formation'
@@ -71,18 +76,21 @@ class FormationsType extends AbstractType
             ])
             ->add('priority')
             ->add('vignette_url', FileType::class, [
+                'label' => false,
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'La vignette de la formation'
                 ]
             ])
             ->add('sanction', EntityType::class, [
+                'label' => false,
                 'class' => Sanctions::class,
                 'choice_label' => 'sanction',
                 'multiple' => false,
                 'expanded' => true
             ])
             ->add('categories', EntityType::class, [
+                'label' => false,
                 'class' => Categories::class,
                 'choice_label' => 'category',
                 'multiple' => true,
@@ -90,6 +98,7 @@ class FormationsType extends AbstractType
                 'by_reference' => false
             ])
             ->add('university', EntityType::class, [
+                'label' => false,
                 'class' => Universities::class,
                 'choice_label' => 'university',
                 'multiple' => false,

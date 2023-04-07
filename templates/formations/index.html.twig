@@ -97,7 +97,7 @@
 
 			</div>
 			<div id="contenue">
-
+				<h3>Contenus du cours</h3>
 				{{ formation.contents|raw }}
 
 			</div>
@@ -121,12 +121,15 @@
 								{{ category.category}}
 							{% endfor %}
 						</li>
-						<li>
-							<i class="fa-solid fa-medal"></i>
+						{% if formation.prerequisite %}
+							<li>
+								<i class="fa-solid fa-medal"></i>
 
-							{{ formation.prerequisite |raw}}
+								{{ formation.prerequisite |raw}}
 
-						</li>
+							</li>
+						{% endif %}
+
 						<li>
 							<i class="fa-solid fa-graduation-cap"></i>
 							{{ formation.sanction.sanction }}
@@ -135,10 +138,13 @@
 							<i class="fa-solid fa-display"></i>
 							100% en ligne
 						</li>
-						<li>
-							<i class="fa-regular fa-clock"></i>
-							{{ formation.duration }}
-						</li>
+						{% if formation.duration %}
+							<li>
+								<i class="fa-regular fa-clock"></i>
+								{{ formation.duration }}
+							</li>
+						{% endif %}
+
 					</ul>
 				</div>
 			</div>
@@ -147,10 +153,13 @@
 				<div class="card card--aside">
 					<div class="card__header">
 						<h3 class="card__title">Tarif</h3>
-						<span>
-							<i class="fa-solid fa-money-bill-wave"></i>
-							{{ formation.getFormatedPrice("Ar") }}
-						</span>
+						{% if formation.prices %}
+							<span>
+								<i class="fa-solid fa-money-bill-wave"></i>
+								{{ formation.getFormatedPrice("Ar") }}
+							</span>
+						{% endif %}
+
 						<hr style="width: 75% ;">
 					</div>
 					<div class="card__body">

@@ -29,8 +29,12 @@
 							{% endfor %}
 						</td>
 						<td>{{ formation.sanction.sanction }}</td>
-						<td>{{ formation.prices }}
-							Ar</td>
+						<td>
+							{% if formation.prices %}
+								{{ formation.prices }}
+								Ar
+							{% endif %}
+						</td>
 						<td>
 							<a href='#' data-bs-toggle="modal" data-bs-target="#formationNo{{ formation.id }}">Voir</a>
 						</td>
@@ -83,8 +87,13 @@
 									</tr>
 									<tr>
 										<td style="text-decoration:underline;">Prix</td>
-										<td>{{ formation.prices }}
-											Ar</td>
+										<td>
+											{% if formation.prices %}
+												{{ formation.prices }}
+												Ar
+											{% endif %}
+
+										</td>
 									</tr>
 									<tr>
 										<td style="text-decoration:underline;">Finalitée</td>

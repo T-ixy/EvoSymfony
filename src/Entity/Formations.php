@@ -47,7 +47,7 @@ class Formations
     #[ORM\Column(nullable: true)]
     private ?int $prices = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $duration = null;
 
     #[ORM\Column]
@@ -197,7 +197,7 @@ class Formations
 
         $price = number_format($this->prices, 0, ',', ' ');
 
-        return $formatedPrice = ($accuracy == "ar") ?  $price . ' Ar' : $price . ' €' ;
+            return $formatedPrice = ($accuracy == "ar") ?  $price . ' Ar' : $price . ' €' ;
     }
 
     public function setPrices(?int $prices): self
@@ -212,7 +212,7 @@ class Formations
         return $this->duration;
     }
 
-    public function setDuration(string $duration): self
+    public function setDuration(?string $duration): self
     {
         $this->duration = $duration;
 
