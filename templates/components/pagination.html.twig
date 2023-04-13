@@ -1,4 +1,4 @@
-{% if pageCount > 1 %}
+{# {% if pageCount > 1 %}
 	<div class="pagination">
 
 		{% for page in pagesInRange %}
@@ -15,4 +15,48 @@
 
 		
 	</div>
+{% endif %} #}
+
+{% if pageCount > 1 %}
+    <div class="pagination">
+
+            {% if previous is defined %}
+                    <a  rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}" style="font-size:1.2rem">&laquo;&nbsp;Précédent</a>
+            {% endif %}
+
+            {% if startPage > 1 %}
+                    <a href="{{ path(route, query|merge({(pageParameterName): 1})) }}"><button>1</button></a>
+                {% if startPage == 3 %}
+                        <a href="{{ path(route, query|merge({(pageParameterName): 2})) }}"><button>2</button></a>
+                {% elseif startPage != 2 %}
+                        <span >&hellip;</span>
+                {% endif %}
+            {% endif %}
+
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                        <a href="{{ path(route, query|merge({(pageParameterName): page})) }}#formation">
+						<button>{{ page }}</button>
+					</a>
+                {% else %}
+                        <button class="current" style="background-color:#D01B4B; color:white">{{ page }}</button>
+                {% endif %}
+
+            {% endfor %}
+
+            {% if pageCount > endPage %}
+                {% if pageCount > (endPage + 1) %}
+                    {% if pageCount > (endPage + 2) %}
+                            <span>&hellip;</span>
+                    {% else %}
+                            <a  href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}"><button>{{ pageCount -1 }}</button></a>
+                    {% endif %}
+                {% endif %}
+                    <a  href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}"><button>{{ pageCount }}</button></a>
+            {% endif %}
+
+            {% if next is defined %}
+                    <a  rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}" style="font-size:1.2rem">Suivant&nbsp;&raquo;</a>
+            {% endif %}
+    </div class="pagination">
 {% endif %}

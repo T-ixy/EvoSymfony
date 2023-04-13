@@ -60,8 +60,8 @@
 
 				<div class="card">
 					<div class="card__header">
-						<img class="card__badge" src="{{ formation.university.logoUrl}}" alt="EvolutiV">
-						<img class="card__img" src="{{ formation.vignetteUrl }}" alt="titre de la formation">
+						<img class="card__badge" src="{{ asset(formation.university.logoUrl)}}" alt="EvolutiV">
+						<img class="card__img" src="{{ asset(formation.vignetteUrl) }}" alt="titre de la formation">
 					</div>
 					<div class="card__body">
 						<a href="{{ path('app_formations', {id:formation.id}) }}">
