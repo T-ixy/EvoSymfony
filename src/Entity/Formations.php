@@ -131,7 +131,7 @@ class Formations
         return $this->generality;
     }
 
-    public function setGenerality(string $generality): self
+    public function setGenerality(?string $generality): self
     {
         $this->generality = $generality;
 
